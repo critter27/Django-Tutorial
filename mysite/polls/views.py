@@ -3,15 +3,11 @@ from .models import Question, Choice
 from django.template import loader
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse
-
+from django.utils import timezone
 
 def index(request):
-    latest_question_list = Question.objects.order_by('-pub_date')[:5]
-    #template = loader.get_template('polls/index.html')
-    #output = ', '.join([q.question_text for q in latest_question_list])   
+    latest_question_list = Question.objects.filter(pub_date__lte=timezone.now()).order_by('-pub_date')[:5]  
     context = {'latest_question_list': latest_question_list}
-    #return HttpResponse(template.render(context,'polls/index.html',request))
-    #return HttpResponse("Hello World. You're at the polls index bih.")
     return render(request,'polls/index.html',context)
     
 def detail(request, question_id):
