@@ -1,4 +1,4 @@
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect, Http404
 from .models import Question, Choice
 from django.template import loader
 from django.shortcuts import render, get_object_or_404
@@ -12,15 +12,10 @@ def index(request):
     
 def detail(request, question_id):
     question = get_object_or_404(Question, pk=question_id)
+    if question.pub_date > timezone.now():
+        raise Http404('Question not found')
     return render(request, 'polls/detail.html', {'question': question})
-    '''try:
-        question = Question.objects.get(pk=question_id)
-        #Question.objects.get(pk=question_id)
-    except Question.DoesNotExist:
-        raise Http404('Question does not exist')
-    return render(request, 'polls/detail.html', {'question': question})
-    #return HttpResponse("You're looking at question %s: " % question_id)
-    '''
+    
 def results(request, question_id):
     question = get_object_or_404(Question, pk=question_id)
     return render(request, 'polls/results.html', {'question': question})
