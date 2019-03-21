@@ -27,9 +27,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['serene-tundra-60658.herokuapp.com']
 
-import django_heroku
-django_heroku.settings(locals())
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -129,3 +126,5 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR,'static')
+import django_heroku
+django_heroku.settings(locals())
