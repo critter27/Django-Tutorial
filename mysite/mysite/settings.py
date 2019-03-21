@@ -25,7 +25,7 @@ SECRET_KEY = 'cva3-j1&y-8f#o=!ze(svqaj=vu7r14iw_%f&k&(u#4dxd@8lj'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['serene-tundra-60658.herokuapp.com']
+ALLOWED_HOSTS = ['https://serene-tundra-60658.herokuapp.com']
 
 # Application definition
 
