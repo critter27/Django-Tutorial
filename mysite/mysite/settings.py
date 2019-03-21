@@ -25,8 +25,10 @@ SECRET_KEY = 'cva3-j1&y-8f#o=!ze(svqaj=vu7r14iw_%f&k&(u#4dxd@8lj'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['serene-tundra-60658.herokuapp.com']
 
+import django_heroku
+django_heroku.settings(locals())
 
 # Application definition
 
